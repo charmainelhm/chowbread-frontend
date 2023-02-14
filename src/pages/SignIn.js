@@ -50,10 +50,10 @@ const SignIn = ({ setCookie }) => {
   };
 
   return (
-    <>
-      <h1>Welcome</h1>
+    <div className="mt-12 mx-auto w-4/5 max-w-sm">
+      <h1 className="mb-4">Welcome</h1>
       <p>{loginOutcome.message}</p>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="flex flex-col gap-2 ">
         {loginInputs.map((input) => (
           <FormInput
             key={input.id}
@@ -62,14 +62,14 @@ const SignIn = ({ setCookie }) => {
             onChange={onLoginChange}
           />
         ))}
-        <button className="btn btn-solid" type="submit">
+        <button className="btn btn-solid mt-2" type="submit">
           Submit
         </button>
       </form>
-      <p>
+      <p className="mt-10">
         Do not have an account yet? <Link to="/register">Sign up</Link>
       </p>
-    </>
+    </div>
   );
 };
 

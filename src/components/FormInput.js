@@ -11,7 +11,6 @@ const FormInput = (props) => {
   return (
     <div>
       <input
-        className="text-slate-800"
         {...inputProps}
         onChange={onChange}
         onBlur={handleFocus}

@@ -102,10 +102,10 @@ const Register = ({ setCookie }) => {
   };
 
   return (
-    <>
-      <h1>Create a New Account</h1>
+    <div className="mt-12 mx-auto w-4/5 max-w-sm">
+      <h1 className="mb-4">Create a New Account</h1>
       <p>{registrationOutcome.message}</p>
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleRegister} className="flex flex-col gap-2 ">
         {registerInputs.map((input) => (
           <FormInput
             key={input.id}
@@ -114,14 +114,14 @@ const Register = ({ setCookie }) => {
             onChange={onRegisterChange}
           />
         ))}
-        <button className="btn btn-solid" type="submit">
+        <button className="btn btn-solid mt-2" type="submit">
           Submit
         </button>
       </form>
-      <p>
+      <p className="mt-10">
         Already have an account? <Link to="/signin">Sign In</Link>
       </p>
-    </>
+    </div>
   );
 };
 
