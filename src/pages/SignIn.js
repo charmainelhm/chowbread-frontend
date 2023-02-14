@@ -118,7 +118,9 @@ const SignIn = ({ setCookie }) => {
             onChange={onLoginChange}
           />
         ))}
-        <button type="submit">Submit</button>
+        <button className="btn btn-solid" type="submit">
+          Submit
+        </button>
       </form>
       <h2>Or register a new account with us</h2>
       <form onSubmit={handleRegister}>
@@ -130,7 +132,9 @@ const SignIn = ({ setCookie }) => {
             onChange={onRegisterChange}
           />
         ))}
-        <button type="submit">Submit</button>
+        <button className="btn btn-solid" type="submit">
+          Submit
+        </button>
       </form>
     </>
   );

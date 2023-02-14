@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav>
-      <ul>
+    <nav className="px-2 py-4">
+      <ul className="flex justify-end gap-x-2">
         <li>
           <Link to="/">Calculator</Link>
         </li>
