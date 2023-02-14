@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { API_URL } from "../api-util";
+import jwt_decode from "jwt-decode";
 
 const loginInputs = [
   {
@@ -19,11 +20,13 @@ const loginInputs = [
   },
 ];
 
-const SignIn = () => {
+const SignIn = ({ setCookie }) => {
   const [loginValues, setLoginvalues] = useState({
     email: "",
     password: "",
   });
+
+  const [user, setUser] = useState({});
 
   const onLoginChange = (e) => {
     setLoginvalues({ ...loginValues, [e.target.name]: e.target.value });
@@ -35,7 +38,15 @@ const SignIn = () => {
       const res = await axios.post(`${API_URL}/session/`, loginValues, {
         withCredentials: true,
       });
-      console.log(res.data);
+      if (res.data) {
+        setCookie("access_token", res.data.access_token, {
+          path: "/",
+          sameSite: "lax",
+          secure: "true",
+        });
+        const userData = jwt_decode(res.data.access_token);
+        setUser({ ...userData });
+      }
     } catch (err) {
       console.log(err.response.data);
     }
