@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
-import { API_URL, loginInputs } from "../util";
 import jwt_decode from "jwt-decode";
+import { useState } from "react";
 import FormInput from "../components/FormInput";
+import { API_URL, loginInputs } from "../util";
 
 const SignIn = ({ setCookie }) => {
   const [loginValues, setLoginvalues] = useState({
@@ -75,7 +75,7 @@ const SignIn = ({ setCookie }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(loginValues);
+    // console.log(loginValues);
     try {
       const res = await axios.post(`${API_URL}/session/`, loginValues, {
         withCredentials: true,
@@ -97,7 +97,7 @@ const SignIn = ({ setCookie }) => {
   const handleRegister = async (e) => {
     e.preventDefault();
     const { confirmPassword, ...newUser } = registerValues;
-    console.log(newUser);
+    // console.log(newUser);
     try {
       const res = await axios.post(`${API_URL}/user/`, newUser);
       console.log(res);
