@@ -18,6 +18,16 @@ const SignIn = ({ setCookie }) => {
     confirmPassword: "",
   });
 
+  const [registrationOutcome, setRegistrationOutcome] = useState({
+    success: false,
+    message: "",
+  });
+
+  const [loginOutcome, setLoginOutcome] = useState({
+    success: false,
+    message: "",
+  });
+
   const [user, setUser] = useState({});
 
   const registerInputs = [
@@ -91,24 +101,36 @@ const SignIn = ({ setCookie }) => {
       }
     } catch (err) {
       console.log(err.response.data);
+      setLoginOutcome({ success: false, message: err.response.data.message });
     }
   };
 
-  const handleRegister = async (e) => {
+  const handleRegister = async function (e) {
     e.preventDefault();
     const { confirmPassword, ...newUser } = registerValues;
     // console.log(newUser);
     try {
       const res = await axios.post(`${API_URL}/user/`, newUser);
       console.log(res);
+      if (res.status === 200) {
+        setRegistrationOutcome({
+          success: true,
+          message: "User has been successfully created",
+        });
+      }
     } catch (err) {
-      console.log(err.response.data);
+      // console.log(err.response.data);
+      setRegistrationOutcome({
+        success: false,
+        message: err.response.data.message,
+      });
     }
   };
 
   return (
     <>
       <h1>Sign In Page</h1>
+      <p>{loginOutcome.message}</p>
       <form onSubmit={handleLogin}>
         {loginInputs.map((input) => (
           <FormInput
@@ -123,6 +145,7 @@ const SignIn = ({ setCookie }) => {
         </button>
       </form>
       <h2>Or register a new account with us</h2>
+      <p>{registrationOutcome.message}</p>
       <form onSubmit={handleRegister}>
         {registerInputs.map((input) => (
           <FormInput
