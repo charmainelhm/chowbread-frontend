@@ -4,6 +4,7 @@ import ExpenseList from "./pages/ExpenseList";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 import { useCookies } from "react-cookie";
+import Register from "./pages/Register";
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies();
@@ -14,6 +15,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn setCookie={setCookie} />} />
+          <Route
+            path="/register"
+            element={<Register setCookie={setCookie} />}
+          />
           <Route path="/expenses" element={<ExpenseList />} />
         </Routes>
       </div>
