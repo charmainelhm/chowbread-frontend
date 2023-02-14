@@ -1,10 +1,16 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import FormInput from "../components/FormInput";
+import { loginSuccess } from "../redux/userSlice";
 import { API_URL, loginInputs } from "../util";
 
 const SignIn = ({ setCookie }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [loginValues, setLoginvalues] = useState({
     email: "",
     password: "",
@@ -27,8 +33,6 @@ const SignIn = ({ setCookie }) => {
     success: false,
     message: "",
   });
-
-  const [user, setUser] = useState({});
 
   const registerInputs = [
     {
@@ -97,7 +101,8 @@ const SignIn = ({ setCookie }) => {
           secure: "true",
         });
         const userData = jwt_decode(res.data.access_token);
-        setUser({ ...userData });
+        dispatch(loginSuccess(userData));
+        navigate("/expenses");
       }
     } catch (err) {
       console.log(err.response.data);
