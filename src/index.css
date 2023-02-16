@@ -48,4 +48,23 @@
   .btn-solid {
     @apply bg-indigo-300 text-slate-800;
   }
+
+  .btn-outline {
+    @apply border-2;
+  }
+
+  .tag {
+    @apply bg-indigo-500 w-1/12 py-1 text-center text-sm font-semibold text-slate-100 rounded;
+  }
+  .DELIVERY {
+    @apply bg-pink-600;
+  }
+
+  .GROCERY {
+    @apply bg-lime-600;
+  }
+
+  .OTHERS {
+    @apply bg-slate-600;
+  }
 }

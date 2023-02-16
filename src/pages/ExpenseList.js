@@ -23,6 +23,13 @@ const data = [
     type: "DELIVERY",
     createdAt: "2023-02-07T01:55:18.222Z",
   },
+  {
+    description: "this is a test expense 3",
+    remarks: "Trying out the remarks",
+    amount: 60.9,
+    type: "OTHERS",
+    createdAt: "2023-02-07T01:55:18.222Z",
+  },
 ];
 const ExpenseList = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -34,7 +41,7 @@ const ExpenseList = () => {
       <h1 className="my-8">
         {currentUser ? `${currentUser.firstName}` : "User"}'s Expenses
       </h1>
-      <button>Add New Expense</button>
+      <button className="btn btn-outline">Add New Expense</button>
       <div>{expenseArr}</div>
     </div>
   );
