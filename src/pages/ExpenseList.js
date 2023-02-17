@@ -10,7 +10,6 @@ const ExpenseList = () => {
 
   const toggleModal = () => {
     setModal(!modal);
-    console.log(modal);
   };
 
   const expenseArr = expenseList.map((expense, ind) => {
@@ -18,12 +17,12 @@ const ExpenseList = () => {
   });
   return (
     <div className="mx-auto w-4/5 max-w-screen-lg">
-      <h1 className="my-8">
-        {currentUser ? `${currentUser.firstName}` : "User"}'s Expenses
-      </h1>
-      <button className="btn btn-outline" onClick={toggleModal}>
-        Add New Expense
-      </button>
+      <div className="flex items-center justify-between my-8">
+        <h1>{currentUser ? `${currentUser.firstName}` : "User"}'s Expenses</h1>
+        <button className="btn btn-outline" onClick={toggleModal}>
+          Add New Expense
+        </button>
+      </div>
       <div>{expenseArr}</div>
       {modal && <Modal toggleModal={toggleModal} />}
     </div>

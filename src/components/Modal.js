@@ -54,8 +54,10 @@ const Modal = ({ toggleModal }) => {
             value={expenseValues.type}
             onChange={onTypeChange}
           >
-            {expenseType.map((type) => (
-              <option value={type}>{toTitleCase(type)}</option>
+            {expenseType.map((type, ind) => (
+              <option key={ind} value={type}>
+                {toTitleCase(type)}
+              </option>
             ))}
           </select>
 

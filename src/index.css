@@ -58,7 +58,7 @@
   }
 
   .modal-content {
-    @apply bg-white text-slate-900 absolute top-16 left-1/2 w-4/5 max-w-screen-md p-6 rounded;
+    @apply bg-white text-slate-900 absolute top-20 left-1/2 w-4/5 max-w-screen-md p-6 rounded;
     transform: translateX(-50%);
   }
 
