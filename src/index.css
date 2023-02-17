@@ -45,17 +45,25 @@
     font-weight: 500;
   }
 
-  .modal-content {
-    @apply bg-white text-slate-900 absolute top-16 left-1/2 w-4/5 max-w-screen-md p-4 rounded;
-    transform: translateX(-50%);
-  }
-
   .btn-solid {
     @apply bg-indigo-300 text-slate-800;
   }
 
+  .btn-solid-dark {
+    @apply bg-indigo-600 text-white;
+  }
+
   .btn-outline {
     @apply border-2;
+  }
+
+  .modal-content {
+    @apply bg-white text-slate-900 absolute top-16 left-1/2 w-4/5 max-w-screen-md p-6 rounded;
+    transform: translateX(-50%);
+  }
+
+  .modal-btn {
+    @apply absolute right-0 top-2 text-xl;
   }
 
   .tag {
