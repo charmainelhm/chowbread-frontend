@@ -1,44 +1,43 @@
-const registerInputs = [
+export const loginInputs = [
   {
     id: 1,
     name: "email",
     type: "email",
     placeholder: "Email",
-    errorMessage: "It should be a valid email address!",
     required: true,
   },
   {
     id: 2,
-    name: "firstName",
-    type: "text",
-    placeholder: "First Name",
-    errorMessage: "Please let us know your first name!",
-    required: true,
-  },
-  {
-    id: 3,
-    name: "lastName",
-    type: "text",
-    placeholder: "Last Name",
-    errorMessage: "Please let us know your last name!",
-    required: true,
-  },
-  {
-    id: 4,
     name: "password",
     type: "password",
     placeholder: "Password",
-    errorMessage: "Password should be 6-20 characters",
-    pattern: "^[a-zA-Z0-9!@#$%^&*]{6,20}$",
+    required: true,
+  },
+];
+
+export const createExpenseInputs = [
+  {
+    id: 1,
+    name: "description",
+    type: "text",
+    placeholder: "Expense Description",
+    errorMessage: "Required field",
     required: true,
   },
   {
-    id: 5,
-    name: "confirmPassword",
-    type: "password",
-    placeholder: "Re-enter Password",
-    errorMessage: "Passwords don't match!",
-    pattern: registerValues.password,
+    id: 2,
+    name: "remarks",
+    type: "text",
+    placeholder: "Remarks",
+    errorMessage: "",
+  },
+  {
+    id: 3,
+    name: "amount",
+    type: "number",
+    step: "any",
+    placeholder: "Amount Spent",
+    errorMessage: "Required Field",
     required: true,
   },
 ];
