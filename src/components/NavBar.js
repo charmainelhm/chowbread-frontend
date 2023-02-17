@@ -10,9 +10,9 @@ const NavBar = () => {
         <li>
           <Link to="/expenses">My Expenses</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="signin">Sign In</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

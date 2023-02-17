@@ -6,12 +6,14 @@ import Modal from "../components/Modal";
 import { expenseList } from "../data/testData";
 import { API_URL } from "../util";
 import { updateUserExpenseList } from "../redux/userSlice";
+import { useNavigate } from "react-router";
 
 const ExpenseList = ({ cookies }) => {
   const { currentUser, userExpenses } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [modal, setModal] = useState(false);
-  const [expenses, setExpenses] = useState(expenseList);
+  const [expenses, setExpenses] = useState([]);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -22,6 +24,7 @@ const ExpenseList = ({ cookies }) => {
   }, [userExpenses]);
 
   useEffect(() => {
+    if (!currentUser) navigate("/signin");
     const retrieveUserExpenses = async () => {
       try {
         const res = await axios.get(`${API_URL}/expense/${currentUser.id}`, {
