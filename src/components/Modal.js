@@ -4,8 +4,13 @@ import { useState } from "react";
 import { expenseType } from "../data/expenseType";
 import { toTitleCase } from "../helperFunctions";
 import { GrClose } from "react-icons/gr";
+import axios from "axios";
+import { API_URL } from "../util";
+import { useDispatch } from "react-redux";
+import { updateUserExpenseList } from "../redux/userSlice";
 
-const Modal = ({ toggleModal }) => {
+const Modal = ({ toggleModal, userExpenses, cookies, setExpenses }) => {
+  const dispatch = useDispatch();
   const [expenseValues, setExpenseValues] = useState({
     description: "",
     remarks: "",
@@ -16,7 +21,10 @@ const Modal = ({ toggleModal }) => {
   const onInputChange = (e) => {
     setExpenseValues({
       ...expenseValues,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.name === "amount"
+          ? parseFloat(e.target.value)
+          : e.target.value,
     });
   };
 
@@ -27,9 +35,21 @@ const Modal = ({ toggleModal }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(expenseValues);
+    // console.log(expenseValues);
+    toggleModal();
+    try {
+      const res = await axios.post(`${API_URL}/expense/`, expenseValues, {
+        headers: { access_token: cookies.access_token },
+      });
+
+      const expenses = [...userExpenses, res.data];
+
+      dispatch(updateUserExpenseList(expenses));
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="modal">
@@ -45,7 +65,7 @@ const Modal = ({ toggleModal }) => {
               onChange={onInputChange}
             />
           ))}
-          <label className="font-semibold" for="expense-type">
+          <label className="font-semibold" htmlFor="expense-type">
             Expense Type
           </label>
           <select

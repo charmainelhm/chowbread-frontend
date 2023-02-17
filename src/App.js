@@ -19,7 +19,7 @@ function App() {
             path="/register"
             element={<Register setCookie={setCookie} />}
           />
-          <Route path="/expenses" element={<ExpenseList />} />
+          <Route path="/expenses" element={<ExpenseList cookies={cookies} />} />
         </Routes>
       </div>
     </div>

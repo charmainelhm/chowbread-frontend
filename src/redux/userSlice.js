@@ -4,6 +4,7 @@ const initialState = {
   currentUser: null,
   loading: false,
   error: false,
+  userExpenses: [],
 };
 
 export const userSlice = createSlice({
@@ -24,11 +25,18 @@ export const userSlice = createSlice({
     logout: (state) => {
       return initialState;
     },
-    // to add action for updating user list of expenses
+    updateUserExpenseList: (state, action) => {
+      state.userExpenses = action.payload;
+    },
   },
 });
 
-export const { loginStart, loginSuccess, loginFailure, logout } =
-  userSlice.actions;
+export const {
+  loginStart,
+  loginSuccess,
+  loginFailure,
+  logout,
+  updateUserExpenseList,
+} = userSlice.actions;
 
 export default userSlice.reducer;
