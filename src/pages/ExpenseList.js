@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Expense from "../components/Expense";
 import Modal from "../components/Modal";
-import { expenseList } from "../data/testData";
 import { API_URL } from "../util";
 import { updateUserExpenseList } from "../redux/userSlice";
 import { useNavigate } from "react-router";
+import {
+  calculateCurrentMonthExpense,
+  getCurrentMonth,
+} from "../helperFunctions";
 
 const ExpenseList = ({ cookies }) => {
   const { currentUser, userExpenses } = useSelector((state) => state.user);
@@ -55,6 +58,10 @@ const ExpenseList = ({ cookies }) => {
           Add New Expense
         </button>
       </div>
+      <h3 className="mb-4">
+        Total Food Expenses for {getCurrentMonth()}:{" "}
+        {calculateCurrentMonthExpense(expenses)}
+      </h3>
       <div>{expenseArr}</div>
       {modal && (
         <Modal
