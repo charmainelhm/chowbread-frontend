@@ -1,10 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { calculatorInputs } from "../data/formData";
-import { toTitleCase } from "../helperFunctions";
+import { calculateTotalBill, toTitleCase } from "../helperFunctions";
 import illustration from "../assets/Pasta-pana.png";
+import { defaultCalcValue } from "../util";
 
 const Calculator = () => {
   const [totalBill, setTotalBill] = useState(0);
+  const [inputValues, setInputValues] = useState(defaultCalcValue);
+
+  const handleInputChange = (e) => {
+    const value = parseFloat(e.target.value);
+    setInputValues({ ...inputValues, [e.target.name]: value });
+  };
+
+  const resetCalcValue = () => {
+    setInputValues(defaultCalcValue);
+  };
+
+  useEffect(() => {
+    console.log(inputValues);
+    const total = calculateTotalBill(inputValues);
+    setTotalBill(total);
+  }, [inputValues]);
 
   const calculator = calculatorInputs.map((input, ind) => {
     input.label = input.name
@@ -23,6 +40,8 @@ const Calculator = () => {
           key={ind}
           id={inputData.name}
           {...inputData}
+          value={inputValues[inputData.name]}
+          onChange={handleInputChange}
         />
       </div>
     );
@@ -48,7 +67,12 @@ const Calculator = () => {
               <p className="font-semibold">Total </p>
               <p className="font-bold"> {totalBill}</p>
             </div>
-            <button className="btn btn-solid w-full text-lg">Reset</button>
+            <button
+              onClick={resetCalcValue}
+              className="btn btn-solid w-full text-lg"
+            >
+              Reset
+            </button>
           </div>
         </div>
       </div>

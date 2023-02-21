@@ -21,5 +21,18 @@ export const calculateCurrentMonthExpense = (expenseArr) => {
     return createdMonth === currentMonth ? sum + expense.amount : sum;
   }, 0);
 
-  return currentMonthExpenses;
+  return sgdFormatter.format(currentMonthExpenses);
 };
+
+export const calculateTotalBill = (billInfo) => {
+  const { bill, gst, "service-charge": serviceCharge } = billInfo;
+  const totalGst = bill * (gst / 100);
+  const totalServiceCharge = bill * (serviceCharge / 100);
+  const total = bill + totalGst + totalServiceCharge;
+  return sgdFormatter.format(total);
+};
+
+export const sgdFormatter = new Intl.NumberFormat("en-SG", {
+  style: "currency",
+  currency: "SGD",
+});

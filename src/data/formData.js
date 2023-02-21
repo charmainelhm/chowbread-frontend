@@ -58,7 +58,6 @@ export const calculatorInputs = [
     type: "number",
     step: "any",
     placeholder: "0",
-    value: 8,
   },
   {
     id: 3,
@@ -67,6 +66,5 @@ export const calculatorInputs = [
     type: "number",
     step: "any",
     placeholder: "0",
-    value: 10,
   },
 ];

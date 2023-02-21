@@ -1,9 +1,5 @@
+import { sgdFormatter } from "../helperFunctions";
 import "../index.css";
-
-const formatter = new Intl.NumberFormat("en-SG", {
-  style: "currency",
-  currency: "SGD",
-});
 
 const Expense = ({ expense }) => {
   const date = new Date(expense.createdAt);
@@ -14,7 +10,7 @@ const Expense = ({ expense }) => {
       <p>{date.toLocaleDateString()}</p>
       <p>{expense.remarks}</p>
       <p className="ml-auto text-2xl font-bold">
-        {formatter.format(expense.amount)}
+        {sgdFormatter.format(expense.amount)}
       </p>
       <p className={`tag ${expense.type}`}>{expense.type}</p>
     </div>
