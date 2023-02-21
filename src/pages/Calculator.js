@@ -9,7 +9,7 @@ const Calculator = () => {
   const [inputValues, setInputValues] = useState(defaultCalcValue);
 
   const handleInputChange = (e) => {
-    const value = parseFloat(e.target.value);
+    const value = parseFloat(e.target.value) || e.target.value;
     setInputValues({ ...inputValues, [e.target.name]: value });
   };
 
@@ -18,7 +18,6 @@ const Calculator = () => {
   };
 
   useEffect(() => {
-    console.log(inputValues);
     const total = calculateTotalBill(inputValues);
     setTotalBill(total);
   }, [inputValues]);
@@ -31,13 +30,12 @@ const Calculator = () => {
 
     const { id, symbol, ...inputData } = input;
     return (
-      <div>
-        <label className="calculator-label" for={inputData.name}>
+      <div key={ind}>
+        <label className="calculator-label" htmlFor={inputData.name}>
           {inputData.label}
         </label>
         <input
           className="calculator-input"
-          key={ind}
           id={inputData.name}
           {...inputData}
           value={inputValues[inputData.name]}
@@ -53,7 +51,7 @@ const Calculator = () => {
         Trouble splitting your bill when eating out with your friends? Use this
         calculator!
       </p>
-      <div className="w-11/12 max-w-4xl mx-auto grid grid-cols-auto-fit gap-x-2">
+      <div className="w-11/12 max-w-4xl mx-auto grid grid-cols-auto-fit gap-x-3">
         <div className="text-center">
           <img src={illustration} />
           <a className="opacity-60" href="https://storyset.com/people">

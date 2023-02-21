@@ -29,7 +29,7 @@ export const calculateTotalBill = (billInfo) => {
   const totalGst = bill * (gst / 100);
   const totalServiceCharge = bill * (serviceCharge / 100);
   const total = bill + totalGst + totalServiceCharge;
-  return sgdFormatter.format(total);
+  return sgdFormatter.format(total || 0);
 };
 
 export const sgdFormatter = new Intl.NumberFormat("en-SG", {
