@@ -41,3 +41,32 @@ export const createExpenseInputs = [
     required: true,
   },
 ];
+
+export const calculatorInputs = [
+  {
+    id: 1,
+    name: "bill",
+    symbol: "$",
+    type: "number",
+    step: "any",
+    placeholder: "0",
+  },
+  {
+    id: 2,
+    name: "gst",
+    symbol: "%",
+    type: "number",
+    step: "any",
+    placeholder: "0",
+    value: 8,
+  },
+  {
+    id: 3,
+    name: "service-charge",
+    symbol: "%",
+    type: "number",
+    step: "any",
+    placeholder: "0",
+    value: 10,
+  },
+];

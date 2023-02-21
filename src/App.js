@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import ExpenseList from "./pages/ExpenseList";
-import Home from "./pages/Home";
+import Calculator from "./pages/Calculator";
 import NavBar from "./components/NavBar";
 import { useCookies } from "react-cookie";
 import Register from "./pages/Register";
@@ -13,7 +13,7 @@ function App() {
       <NavBar></NavBar>
       <div className="bg-slate-800 grow rounded-2xl">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Calculator />} />
           <Route path="/signin" element={<SignIn setCookie={setCookie} />} />
           <Route
             path="/register"
