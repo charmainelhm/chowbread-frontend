@@ -63,7 +63,7 @@ const SignIn = ({ setCookie }) => {
             onChange={onLoginChange}
           />
         ))}
-        <button className="btn btn-solid mt-2" type="submit">
+        <button className="btn btn-rounded btn-solid mt-2" type="submit">
           Submit
         </button>
       </form>
