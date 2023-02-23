@@ -8,6 +8,7 @@ import FormInput from "../components/FormInput";
 import { loginInputs } from "../data/formData";
 import { loginSuccess } from "../redux/userSlice";
 import { API_URL } from "../config";
+import illustration from "../assets/Fortune-cookie-amico.png";
 
 const SignIn = ({ setCookie }) => {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const SignIn = ({ setCookie }) => {
   };
 
   return (
-    <div className="mt-12 mx-auto w-4/5 max-w-sm">
+    <div className="mt-12 card">
       <h1 className="mb-4">Welcome</h1>
       <p>{loginOutcome.message}</p>
       <form onSubmit={handleLogin} className="flex flex-col gap-2 ">
@@ -63,13 +64,22 @@ const SignIn = ({ setCookie }) => {
             onChange={onLoginChange}
           />
         ))}
-        <button className="btn btn-rounded btn-solid mt-2" type="submit">
+        <button className="btn btn-rounded btn-yellow mt-2" type="submit">
           Submit
         </button>
       </form>
       <p className="mt-10">
         Do not have an account yet? <Link to="/register">Sign up</Link>
       </p>
+      <div className="w-2/3 ml-auto my-4 text-center">
+        <img className="-scale-x-100" src={illustration} />
+        <a
+          className="text-slate-500 font-normal text-xs"
+          href="https://storyset.com/happy"
+        >
+          Happy illustrations by Storyset
+        </a>
+      </div>
     </div>
   );
 };

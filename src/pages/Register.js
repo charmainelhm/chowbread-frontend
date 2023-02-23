@@ -102,7 +102,7 @@ const Register = ({ setCookie }) => {
   };
 
   return (
-    <div className="mt-12 mx-auto w-4/5 max-w-sm">
+    <div className="mt-12 card">
       <h1 className="mb-4">Create a New Account</h1>
       <p>{registrationOutcome.message}</p>
       <form onSubmit={handleRegister} className="flex flex-col gap-2 ">
@@ -114,11 +114,11 @@ const Register = ({ setCookie }) => {
             onChange={onRegisterChange}
           />
         ))}
-        <button className="btn btn-rounded btn-solid mt-2" type="submit">
+        <button className="btn btn-rounded btn-yellow mt-2" type="submit">
           Submit
         </button>
       </form>
-      <p className="mt-10">
+      <p className="mt-10 mb-4">
         Already have an account? <Link to="/signin">Sign In</Link>
       </p>
     </div>

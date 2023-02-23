@@ -9,9 +9,9 @@ import Register from "./pages/Register";
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies();
   return (
-    <div className="bg-slate-900 flex flex-col min-h-screen text-white">
+    <div className="flex flex-col min-h-screen text-white">
       <NavBar></NavBar>
-      <div className="bg-slate-800 grow rounded-2xl">
+      <div className="grow rounded-2xl">
         <Routes>
           <Route path="/" element={<Calculator />} />
           <Route path="/signin" element={<SignIn setCookie={setCookie} />} />

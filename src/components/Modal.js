@@ -81,7 +81,7 @@ const Modal = ({ toggleModal, userExpenses, cookies, setExpenses }) => {
             ))}
           </select>
 
-          <button className="btn btn-solid-dark mt-2 self-end" type="submit">
+          <button className="btn btn-solid mt-2 self-end" type="submit">
             Add Expense
           </button>
         </form>

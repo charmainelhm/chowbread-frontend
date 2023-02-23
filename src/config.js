@@ -8,9 +8,9 @@ export const defaultCalcValue = {
 };
 
 export const expenseType = [
-  { name: "EATOUT", color: "sky" },
-  { name: "DELIVERY", color: "pink" },
-  { name: "GROCERY", color: "lime" },
-  { name: "OTHERS", color: "slate" },
+  { name: "EATOUT", color: "rose" },
+  { name: "DELIVERY", color: "yellow" },
+  { name: "GROCERY", color: "orange" },
+  { name: "OTHERS", color: "purple" },
 ];
 // export const expenseType = ["EATOUT", "DELIVERY", "GROCERY", "OTHERS"];

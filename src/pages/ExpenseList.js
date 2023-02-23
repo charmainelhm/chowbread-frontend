@@ -71,7 +71,7 @@ const ExpenseList = ({ cookies, removeCookie }) => {
             const { color } = expenseType.filter(
               (data) => data.name === type
             )[0];
-            return colors[color][600];
+            return colors[color][500];
           }),
         },
       ],
@@ -120,12 +120,12 @@ const ExpenseList = ({ cookies, removeCookie }) => {
         <h1>
           {currentUser ? `${currentUser.firstName}` : "User"}'s Food Expenses
         </h1>
-        <button className="btn" onClick={handleLogout}>
+        <button className="btn btn-solid" onClick={handleLogout}>
           <TbLogout className="btn-icon" />
           Logout
         </button>
       </div>
-      <div className="flex justify-center items-center py-4">
+      <div className="flex justify-center items-center py-10 mb-6 text-fuchsia-900 bg-white rounded-xl shadow-lg shadow-slate-400/50">
         <h3 className="mb-4 w-1/3">
           Total Food Expenses for {getCurrentMonth()}:{" "}
           {calculateCurrentMonthExpense(expenses)}
@@ -136,7 +136,7 @@ const ExpenseList = ({ cookies, removeCookie }) => {
       </div>
 
       <div className="text-right mb-3">
-        <button className="btn btn-solid" onClick={toggleModal}>
+        <button className="btn btn-dotted btn-rounded" onClick={toggleModal}>
           <TbPlus className="btn-icon" />
           Add New Expense
         </button>
