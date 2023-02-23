@@ -17,6 +17,7 @@ import {
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import { API_URL } from "../util";
+import { TbLogout, TbPlus } from "react-icons/tb";
 
 const ExpenseList = ({ cookies, removeCookie }) => {
   const { currentUser, userExpenses } = useSelector((state) => state.user);
@@ -96,6 +97,7 @@ const ExpenseList = ({ cookies, removeCookie }) => {
           {currentUser ? `${currentUser.firstName}` : "User"}'s Food Expenses
         </h1>
         <button className="btn" onClick={handleLogout}>
+          <TbLogout className="btn-icon" />
           Logout
         </button>
       </div>
@@ -103,9 +105,12 @@ const ExpenseList = ({ cookies, removeCookie }) => {
         Total Food Expenses for {getCurrentMonth()}:{" "}
         {calculateCurrentMonthExpense(expenses)}
       </h3>
-      <button className="btn btn-outline" onClick={toggleModal}>
-        Add New Expense
-      </button>
+      <div className="text-right mb-3">
+        <button className="btn btn-solid" onClick={toggleModal}>
+          <TbPlus className="btn-icon" />
+          Add New Expense
+        </button>
+      </div>
       <div>{expenseArr}</div>
       {modal && (
         <Modal

@@ -62,6 +62,10 @@
     @apply border-2;
   }
 
+  .btn-icon {
+    @apply text-xl inline-block mr-1;
+  }
+
   .modal-content {
     @apply bg-white text-slate-900 absolute top-20 left-1/2 w-4/5 max-w-screen-md p-6 rounded;
     transform: translateX(-50%);
@@ -72,8 +76,13 @@
   }
 
   .tag {
-    @apply bg-indigo-500 w-1/12 py-1 text-center text-sm font-semibold text-slate-100 rounded;
+    @apply bg-gray-600 w-1/12 py-1 text-center text-sm font-semibold text-slate-100 rounded;
   }
+
+  .EATOUT {
+    @apply bg-sky-600;
+  }
+
   .DELIVERY {
     @apply bg-pink-600;
   }
