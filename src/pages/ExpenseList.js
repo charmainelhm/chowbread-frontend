@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Expense from "../components/Expense";
 import Modal from "../components/Modal";
-import { updateUserExpenseList, loginSuccess } from "../redux/userSlice";
+import {
+  updateUserExpenseList,
+  loginSuccess,
+  logout,
+} from "../redux/userSlice";
 import { useNavigate } from "react-router";
 import {
   calculateCurrentMonthExpense,
@@ -11,8 +15,10 @@ import {
   retrieveUserExpenses,
 } from "../helperFunctions";
 import jwt_decode from "jwt-decode";
+import axios from "axios";
+import { API_URL } from "../util";
 
-const ExpenseList = ({ cookies }) => {
+const ExpenseList = ({ cookies, removeCookie }) => {
   const { currentUser, userExpenses } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,6 +27,31 @@ const ExpenseList = ({ cookies }) => {
 
   const toggleModal = () => {
     setModal(!modal);
+  };
+
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(
+        `${API_URL}/session/${currentUser.id}`,
+        {},
+        {
+          headers: { access_token: cookies.access_token },
+        }
+      );
+      if (res.data.logOutSuccess) {
+        removeCookie("access_token", {
+          path: "/",
+          sameSite: "lax",
+          secure: "true",
+        });
+
+        dispatch(logout());
+        // console.log("Logout success!");
+        navigate(0);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -64,14 +95,17 @@ const ExpenseList = ({ cookies }) => {
         <h1>
           {currentUser ? `${currentUser.firstName}` : "User"}'s Food Expenses
         </h1>
-        <button className="btn btn-outline" onClick={toggleModal}>
-          Add New Expense
+        <button className="btn" onClick={handleLogout}>
+          Logout
         </button>
       </div>
       <h3 className="mb-4">
         Total Food Expenses for {getCurrentMonth()}:{" "}
         {calculateCurrentMonthExpense(expenses)}
       </h3>
+      <button className="btn btn-outline" onClick={toggleModal}>
+        Add New Expense
+      </button>
       <div>{expenseArr}</div>
       {modal && (
         <Modal
