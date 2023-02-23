@@ -16,7 +16,7 @@ const FormInput = (props) => {
         onBlur={handleFocus}
         focused={focused.toString()}
       />
-      <span>{errorMessage}</span>
+      <span className="error-message">{errorMessage}</span>
     </div>
   );
 };

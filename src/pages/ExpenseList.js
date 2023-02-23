@@ -13,11 +13,14 @@ import {
   checkValidUserSession,
   getCurrentMonth,
   retrieveUserExpenses,
+  sortExpensesByType,
 } from "../utils/helperFunctions";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
-import { API_URL } from "../config";
+import { API_URL, expenseType } from "../config";
 import { TbLogout, TbPlus } from "react-icons/tb";
+import ExpenseChart from "../components/ExpenseChart";
+import colors from "tailwindcss/colors";
 
 const ExpenseList = ({ cookies, removeCookie }) => {
   const { currentUser, userExpenses } = useSelector((state) => state.user);
@@ -25,6 +28,7 @@ const ExpenseList = ({ cookies, removeCookie }) => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [expenses, setExpenses] = useState([]);
+  const [chartData, setChartData] = useState();
 
   const toggleModal = () => {
     setModal(!modal);
@@ -54,6 +58,26 @@ const ExpenseList = ({ cookies, removeCookie }) => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    const result = sortExpensesByType(expenses);
+    const data = {
+      labels: Object.keys(result),
+      datasets: [
+        {
+          label: "Expense Type",
+          data: Object.values(result),
+          backgroundColor: Object.keys(result).map((type) => {
+            const { color } = expenseType.filter(
+              (data) => data.name === type
+            )[0];
+            return colors[color][600];
+          }),
+        },
+      ],
+    };
+    setChartData(data);
+  }, [expenses]);
 
   useEffect(() => {
     setExpenses(userExpenses);
@@ -101,10 +125,16 @@ const ExpenseList = ({ cookies, removeCookie }) => {
           Logout
         </button>
       </div>
-      <h3 className="mb-4">
-        Total Food Expenses for {getCurrentMonth()}:{" "}
-        {calculateCurrentMonthExpense(expenses)}
-      </h3>
+      <div className="flex justify-center items-center py-4">
+        <h3 className="mb-4 w-1/3">
+          Total Food Expenses for {getCurrentMonth()}:{" "}
+          {calculateCurrentMonthExpense(expenses)}
+        </h3>
+        <div className="w-1/3">
+          {chartData ? <ExpenseChart chartData={chartData} /> : ""}
+        </div>
+      </div>
+
       <div className="text-right mb-3">
         <button className="btn btn-solid" onClick={toggleModal}>
           <TbPlus className="btn-icon" />

@@ -7,4 +7,10 @@ export const defaultCalcValue = {
   "service-charge": 10,
 };
 
-export const expenseType = ["EATOUT", "DELIVERY", "GROCERY", "OTHERS"];
+export const expenseType = [
+  { name: "EATOUT", color: "sky" },
+  { name: "DELIVERY", color: "pink" },
+  { name: "GROCERY", color: "lime" },
+  { name: "OTHERS", color: "slate" },
+];
+// export const expenseType = ["EATOUT", "DELIVERY", "GROCERY", "OTHERS"];

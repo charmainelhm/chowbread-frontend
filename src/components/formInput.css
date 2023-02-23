@@ -1,8 +1,12 @@
-span {
+/* span {
+  color: red;
+  display: none;
+} */
+.error-message {
   color: red;
   display: none;
 }
 
-input:invalid[focused="true"] ~ span {
+input:invalid[focused="true"] ~ .error-message {
   display: block;
 }

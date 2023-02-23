@@ -75,8 +75,8 @@ const Modal = ({ toggleModal, userExpenses, cookies, setExpenses }) => {
             onChange={onTypeChange}
           >
             {expenseType.map((type, ind) => (
-              <option key={ind} value={type}>
-                {toTitleCase(type)}
+              <option key={ind} value={type.name}>
+                {toTitleCase(type.name)}
               </option>
             ))}
           </select>

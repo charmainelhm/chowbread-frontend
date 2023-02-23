@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "../config";
+import { API_URL, expenseType } from "../config";
 
 export const toTitleCase = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -25,6 +25,17 @@ export const calculateCurrentMonthExpense = (expenseArr) => {
   }, 0);
 
   return sgdFormatter.format(currentMonthExpenses);
+};
+
+export const sortExpensesByType = (expenses) => {
+  const sortedData = expenses.reduce((sortedData, expense) => {
+    const updatedValue = sortedData[expense.type]
+      ? sortedData[expense.type] + expense.amount
+      : expense.amount;
+    return { ...sortedData, [expense.type]: updatedValue };
+  }, {});
+
+  return sortedData;
 };
 
 export const calculateTotalBill = (billInfo) => {
