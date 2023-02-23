@@ -1,3 +1,6 @@
+import axios from "axios";
+import { API_URL } from "./util";
+
 export const toTitleCase = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 };
@@ -36,3 +39,27 @@ export const sgdFormatter = new Intl.NumberFormat("en-SG", {
   style: "currency",
   currency: "SGD",
 });
+
+export const checkValidUserSession = async (cookie) => {
+  try {
+    const res = await axios.get(`${API_URL}/session/user`, {
+      headers: { access_token: cookie },
+    });
+
+    return res.data.validSession;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const retrieveUserExpenses = async (userId, cookie) => {
+  try {
+    const res = await axios.get(`${API_URL}/expense/${userId}`, {
+      headers: { access_token: cookie },
+    });
+
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};

@@ -1,15 +1,16 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Expense from "../components/Expense";
 import Modal from "../components/Modal";
-import { API_URL } from "../util";
-import { updateUserExpenseList } from "../redux/userSlice";
+import { updateUserExpenseList, loginSuccess } from "../redux/userSlice";
 import { useNavigate } from "react-router";
 import {
   calculateCurrentMonthExpense,
+  checkValidUserSession,
   getCurrentMonth,
+  retrieveUserExpenses,
 } from "../helperFunctions";
+import jwt_decode from "jwt-decode";
 
 const ExpenseList = ({ cookies }) => {
   const { currentUser, userExpenses } = useSelector((state) => state.user);
@@ -27,22 +28,31 @@ const ExpenseList = ({ cookies }) => {
   }, [userExpenses]);
 
   useEffect(() => {
-    if (!currentUser) navigate("/signin");
-    const retrieveUserExpenses = async () => {
-      try {
-        const res = await axios.get(`${API_URL}/expense/${currentUser.id}`, {
-          headers: { access_token: cookies.access_token },
-        });
-
-        if (res) {
-          dispatch(updateUserExpenseList(res.data));
-        }
-      } catch (err) {
-        console.log(err);
-      }
+    const retrieveExpenses = async () => {
+      const expenseList = await retrieveUserExpenses(
+        currentUser.id,
+        cookies.access_token
+      );
+      dispatch(updateUserExpenseList(expenseList));
     };
 
-    if (currentUser) retrieveUserExpenses();
+    if (currentUser) {
+      retrieveExpenses();
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    const retrieveData = async () => {
+      const cookie = cookies.access_token;
+      const validSession = await checkValidUserSession(cookie);
+      if (validSession) {
+        const userData = jwt_decode(cookie);
+        dispatch(loginSuccess(userData));
+      } else navigate("/signin");
+    };
+    if (!cookies.access_token) {
+      navigate("/signin");
+    } else retrieveData();
   }, []);
 
   const expenseArr = expenses.map((expense, ind) => {
