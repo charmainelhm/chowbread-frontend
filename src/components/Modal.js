@@ -1,11 +1,11 @@
 import { createExpenseInputs } from "../data/formData";
 import FormInput from "../components/FormInput";
 import { useState } from "react";
-import { expenseType } from "../data/expenseType";
-import { toTitleCase } from "../helperFunctions";
+import { expenseType } from "../config";
+import { toTitleCase } from "../utils/helperFunctions";
 import { GrClose } from "react-icons/gr";
 import axios from "axios";
-import { API_URL } from "../util";
+import { API_URL } from "../config";
 import { useDispatch } from "react-redux";
 import { updateUserExpenseList } from "../redux/userSlice";
 

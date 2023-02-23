@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { calculatorInputs } from "../data/formData";
-import { calculateTotalBill, toTitleCase } from "../helperFunctions";
+import { calculateTotalBill, toTitleCase } from "../utils/helperFunctions";
 import illustration from "../assets/Pasta-pana.png";
-import { defaultCalcValue } from "../util";
+import { defaultCalcValue } from "../config";
 
 const Calculator = () => {
   const [totalBill, setTotalBill] = useState(0);

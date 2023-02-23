@@ -1,4 +1,4 @@
-import { sgdFormatter } from "../helperFunctions";
+import { sgdFormatter } from "../utils/helperFunctions";
 import "../index.css";
 
 const Expense = ({ expense }) => {

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import { loginInputs } from "../data/formData";
 import { loginSuccess } from "../redux/userSlice";
-import { API_URL } from "../util";
+import { API_URL } from "../config";
 
 const SignIn = ({ setCookie }) => {
   const dispatch = useDispatch();

@@ -13,10 +13,10 @@ import {
   checkValidUserSession,
   getCurrentMonth,
   retrieveUserExpenses,
-} from "../helperFunctions";
+} from "../utils/helperFunctions";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
-import { API_URL } from "../util";
+import { API_URL } from "../config";
 import { TbLogout, TbPlus } from "react-icons/tb";
 
 const ExpenseList = ({ cookies, removeCookie }) => {

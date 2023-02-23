@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "./util";
+import { API_URL } from "../config";
 
 export const toTitleCase = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
