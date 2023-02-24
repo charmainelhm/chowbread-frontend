@@ -8,7 +8,9 @@ import FormInput from "../components/FormInput";
 import { loginInputs } from "../data/formData";
 import { loginSuccess } from "../redux/userSlice";
 import { API_URL } from "../config";
-import illustration from "../assets/Fortune-cookie-amico.png";
+import fallbackImg from "../assets/Fortune-cookie-amico.png";
+import webpImg from "../assets/Fortune-cookie-amico.webp";
+import Illustration from "../components/Illustration";
 
 const SignIn = ({ setCookie }) => {
   const dispatch = useDispatch();
@@ -72,13 +74,15 @@ const SignIn = ({ setCookie }) => {
         Do not have an account yet? <Link to="/register">Sign up</Link>
       </p>
       <div className="w-2/3 ml-auto my-4 text-center">
-        <img className="-scale-x-100" src={illustration} />
-        <a
-          className="text-slate-500 font-normal text-xs"
-          href="https://storyset.com/happy"
-        >
-          Happy illustrations by Storyset
-        </a>
+        <Illustration
+          fallbackSrc={fallbackImg}
+          webpSrc={webpImg}
+          mode={"light"}
+          credits={{
+            ref: "https://storyset.com/happy",
+            text: "Happy illustrations by Storyset",
+          }}
+        />
       </div>
     </div>
   );

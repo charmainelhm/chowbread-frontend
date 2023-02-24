@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { calculatorInputs } from "../data/formData";
 import { calculateTotalBill, toTitleCase } from "../utils/helperFunctions";
-import illustration from "../assets/Pasta-amico.png";
+import fallbackImg from "../assets/Pasta-amico.png";
+import webpImg from "../assets/Pasta-amico.webp";
 import { defaultCalcValue } from "../config";
+import Illustration from "../components/Illustration";
 
 const Calculator = () => {
   const [totalBill, setTotalBill] = useState(0);
@@ -52,14 +54,16 @@ const Calculator = () => {
         calculator!
       </p>
       <div className="w-11/12 max-w-4xl mx-auto grid grid-cols-auto-fit gap-x-3 bg-yellow-500 rounded-xl overflow-hidden">
-        <div className="text-center py-10">
-          <img className="px-6" src={illustration} />
-          <a
-            className="opacity-60 text-white"
-            href="https://storyset.com/people"
-          >
-            People illustrations by Storyset
-          </a>
+        <div className="text-center py-10 px-6">
+          <Illustration
+            fallbackSrc={fallbackImg}
+            webpSrc={webpImg}
+            mode={"dark"}
+            credits={{
+              ref: "https://storyset.com/people",
+              text: "People illustrations by Storyset",
+            }}
+          />
         </div>
         <div className="bg-white p-4 flex flex-col gap-y-4 text-fuchsia-900">
           {calculator}
