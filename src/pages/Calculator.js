@@ -37,7 +37,7 @@ const Calculator = () => {
     return (
       <div key={ind}>
         <label className="calculator-label" htmlFor={inputData.name}>
-          {inputData.label} <spam className="text-slate-400">{symbol}</spam>
+          {inputData.label} <span className="text-slate-400">{symbol}</span>
         </label>
         <input
           className="calculator-input"
