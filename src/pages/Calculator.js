@@ -37,7 +37,7 @@ const Calculator = () => {
     return (
       <div key={ind}>
         <label className="calculator-label" htmlFor={inputData.name}>
-          {inputData.label}
+          {inputData.label} <spam className="text-slate-400">{symbol}</spam>
         </label>
         <input
           className="calculator-input"
@@ -51,12 +51,12 @@ const Calculator = () => {
   });
   return (
     <>
-      <h1 className="text-center mt-4 mb-2">Bill Calculator</h1>
+      <h1 className="text-center mt-4 mb-2">Bill Calculator📱</h1>
       <p className="text-center mb-4">
-        Trouble splitting your bill when eating out with your friends? Use this
-        calculator!
+        Trouble calculating your share when eating out with your friends? Use
+        this calculator!
       </p>
-      <div className="w-11/12 max-w-4xl mx-auto grid grid-cols-auto-fit gap-x-3 bg-yellow-500 rounded-xl overflow-hidden">
+      <div className="w-11/12 max-w-4xl mx-auto grid grid-cols-auto-fit gap-x-3 bg-yellow-500 rounded-xl overflow-hidden shadow-lg shadow-slate-900/50">
         <div className="text-center py-10 px-6">
           <Illustration
             fallbackSrc={fallbackImg}

@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen text-white">
       <NavBar></NavBar>
-      <div className="grow rounded-2xl">
+      <div className="main-container">
         <Routes>
           <Route path="/" element={<Calculator />} />
           <Route path="/signin" element={<SignIn setCookie={setCookie} />} />

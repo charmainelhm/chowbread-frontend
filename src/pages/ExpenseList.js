@@ -118,18 +118,22 @@ const ExpenseList = ({ cookies, removeCookie }) => {
     <div className="mx-auto w-4/5 max-w-screen-lg">
       <div className="flex items-center justify-between my-8">
         <h1>
-          {currentUser ? `${currentUser.firstName}` : "User"}'s Food Expenses
+          {currentUser ? `${currentUser.firstName}` : "User"}'s Food Expenses 🪙
         </h1>
         <button className="btn btn-solid" onClick={handleLogout}>
           <TbLogout className="btn-icon" />
           Logout
         </button>
       </div>
-      <div className="flex justify-center items-center py-10 mb-6 text-fuchsia-900 bg-white rounded-xl shadow-lg shadow-slate-400/50">
-        <h3 className="mb-4 w-1/3">
-          Total Food Expenses for {getCurrentMonth()}:{" "}
-          {calculateCurrentMonthExpense(expenses)}
-        </h3>
+      <div className="flex justify-center items-center py-10 mb-6 text-fuchsia-900 bg-white rounded-xl shadow-lg shadow-slate-900/50">
+        <div className="w-1/3">
+          <h3 className="font-semibold">
+            Total Food Expenses for {getCurrentMonth()}{" "}
+          </h3>
+          <h2 className="monthly-expense">
+            {calculateCurrentMonthExpense(expenses)}
+          </h2>
+        </div>
         <div className="w-1/3">
           {chartData ? <ExpenseChart chartData={chartData} /> : ""}
         </div>
