@@ -5,10 +5,13 @@ import fallbackImg from "../assets/Pasta-amico.png";
 import webpImg from "../assets/Pasta-amico.webp";
 import { defaultCalcValue } from "../config";
 import Illustration from "../components/Illustration";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { BiCopy } from "react-icons/bi";
 
 const Calculator = () => {
   const [totalBill, setTotalBill] = useState(0);
   const [inputValues, setInputValues] = useState(defaultCalcValue);
+  const [copied, setCopied] = useState(false);
 
   const handleInputChange = (e) => {
     const value = parseFloat(e.target.value) || e.target.value;
@@ -70,7 +73,23 @@ const Calculator = () => {
           <div className="grow rounded p-4 flex flex-col justify-between">
             <div className="flex justify-between text-2xl">
               <p className="font-semibold">Total </p>
-              <p className="font-bold"> {totalBill}</p>
+              <div className="flex gap-x-1">
+                <p className="font-bold"> {totalBill}</p>
+                <CopyToClipboard
+                  text={totalBill}
+                  onCopy={() => {
+                    setCopied(true);
+                  }}
+                >
+                  <button>
+                    <BiCopy
+                      className={`opacity-70 ${
+                        copied ? "text-emerald-600" : "text-fuchsia-800"
+                      }`}
+                    />
+                  </button>
+                </CopyToClipboard>
+              </div>
             </div>
             <button
               onClick={resetCalcValue}
