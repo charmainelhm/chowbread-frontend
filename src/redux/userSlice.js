@@ -11,7 +11,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    loginStart: (state) => {
+    processData: (state) => {
       state.loading = true;
     },
     loginSuccess: (state, action) => {
@@ -26,13 +26,14 @@ export const userSlice = createSlice({
       return initialState;
     },
     updateUserExpenseList: (state, action) => {
+      state.loading = false;
       state.userExpenses = action.payload;
     },
   },
 });
 
 export const {
-  loginStart,
+  processData,
   loginSuccess,
   loginFailure,
   logout,

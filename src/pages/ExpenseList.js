@@ -6,6 +6,7 @@ import {
   updateUserExpenseList,
   loginSuccess,
   logout,
+  processData,
 } from "../redux/userSlice";
 import { useNavigate } from "react-router";
 import {
@@ -36,6 +37,7 @@ const ExpenseList = ({ cookies, removeCookie }) => {
 
   const handleLogout = async () => {
     try {
+      dispatch(processData());
       const res = await axios.post(
         `${API_URL}/session/${currentUser.id}`,
         {},
@@ -85,6 +87,7 @@ const ExpenseList = ({ cookies, removeCookie }) => {
 
   useEffect(() => {
     const retrieveExpenses = async () => {
+      dispatch(processData());
       const expenseList = await retrieveUserExpenses(
         currentUser.id,
         cookies.access_token

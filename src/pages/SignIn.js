@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import { loginInputs } from "../data/formData";
-import { loginSuccess } from "../redux/userSlice";
+import { loginSuccess, processData } from "../redux/userSlice";
 import { API_URL } from "../config";
 import fallbackImg from "../assets/Fortune-cookie-amico.png";
 import webpImg from "../assets/Fortune-cookie-amico.webp";
@@ -34,6 +34,7 @@ const SignIn = ({ setCookie }) => {
     e.preventDefault();
     // console.log(loginValues);
     try {
+      dispatch(processData());
       const res = await axios.post(`${API_URL}/session/`, loginValues, {
         withCredentials: true,
       });

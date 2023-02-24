@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import FormInput from "../components/FormInput";
-import { loginSuccess } from "../redux/userSlice";
+import { loginSuccess, processData } from "../redux/userSlice";
 import { API_URL } from "../config";
 
 const Register = ({ setCookie }) => {
@@ -79,6 +79,7 @@ const Register = ({ setCookie }) => {
     const { confirmPassword, ...newUser } = registerValues;
     // console.log(newUser);
     try {
+      dispatch(processData());
       const res = await axios.post(`${API_URL}/user/`, newUser);
       //   console.log(res);
 
