@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# ChowBread
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a fullstack web application created for General Assembly’s Software Engineering Immersive Program. This is the frontend repository of the application. The backend repository can be found [here](https://github.com/charmainelhm/chowbread-backend).
 
-## Available Scripts
+ChowBread is a web application built for users to track their food expenses. After registering for an account, users can then add food expenses in ChowBread to a clearer visualisation on how much and where the money was spent on. There is also an in-built GST calculator which users can use to find out their share of bill when dining out with friends.
 
-In the project directory, you can run:
+### Technical Used
 
-### `npm start`
+These are the cool friends that helped made my application possible
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Frontend:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/en/main)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Axios](https://axios-http.com/)
+- [React Spinners](https://www.npmjs.com/package/react-spinners)
+- [react-chartjs-2](https://react-chartjs-2.js.org/)
+- [Chart.js](https://www.chartjs.org/)
 
-### `npm test`
+Backend:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/)
+- [Prisma](https://www.prisma.io/)
+- [JWT Token](https://jwt.io/)
 
-### `npm run build`
+Database:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [PostgreSQL](https://www.postgresql.org/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All the necessary libraries needed for the web application to run are found in the package.json file provided. Install them using <code>npm install</code> if you are using node package manager.
 
-### `npm run eject`
+If you wish to run the backend server with your own database, you will need to link your database to the server for it to run properly.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Development Process
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### User Stories
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Firstly, the important features of the web application were determined having these user stories in mind:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    User Story 1: As someone who goes out with my friends often I need a way to figure out a way to calculate my portion when splitting bills.
+    User Story 2: As someone who is concerns about food budgetting I need a way to track how much I spend for food and analyse how I can improve on my food budget.
 
-## Learn More
+From there, these are some of the main features that ChowBread should have:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- A calculator that provides a quick and easy way for users to find out the total amount that includes GST and service charge
+- A feature that allows users to add new entry for food expenses
+- A chart that provides a visualisation on a user's spending habits
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Wireframes
 
-### Code Splitting
+Simple wireframes were then developed to accommodate to all the features the application should have:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Calculator Page Wireframe](./readme-assets/wireframe-01.JPEG)
 
-### Analyzing the Bundle Size
+![Food Tracking Feature Wireframe](./readme-assets/wireframe-02.JPEG)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Server Routes
 
-### Making a Progressive Web App
+A backend server was created to help with authenticating users and retrieve all the data necessary to be displayed on the frontend. With the main features in mind, below are routes we came up with for the server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Server Routes](./readme-assets/api-routes.jpg)
 
-### Advanced Configuration
+### Data Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+A relational database was created to store important data such as user data and expense data for the application, and how the different pieces of information are related can be found in the entity relationship diagram below:
 
-### Deployment
+![ERD](./readme-assets/propose-erd.jpg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Future Development
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Add a function that allows user to filter for expenses that they require, such as filtering for a particular month or filtering just expenses spent on eating out.
