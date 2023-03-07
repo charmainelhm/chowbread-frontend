@@ -52,7 +52,7 @@ const Calculator = () => {
   return (
     <>
       <h1 className="text-center mt-4 mb-2">Bill Calculator📱</h1>
-      <p className="text-center mb-4">
+      <p className="text-center mb-4 w-10/12 mx-auto">
         Trouble calculating your share when eating out with your friends? Use
         this calculator!
       </p>
@@ -70,7 +70,7 @@ const Calculator = () => {
         </div>
         <div className="bg-white p-4 flex flex-col gap-y-4 text-fuchsia-900">
           {calculator}
-          <div className="grow rounded p-4 flex flex-col justify-between">
+          <div className="grow py-4 md:px-4 flex flex-col justify-between gap-4">
             <div className="flex justify-between text-2xl">
               <p className="font-semibold">Total </p>
               <div className="flex gap-x-1">

@@ -7,13 +7,25 @@ import { useCookies } from "react-cookie";
 import Register from "./pages/Register";
 import { useSelector } from "react-redux";
 import FadeLoader from "react-spinners/FadeLoader";
+import { useState } from "react";
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies();
   const { loading } = useSelector((state) => state.user);
+  const [showMenu, setShowMenu] = useState(false);
+
+  const handleMenuToggle = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
     <div className="flex flex-col min-h-screen text-white">
-      <NavBar></NavBar>
+      <NavBar showMenu={showMenu} handleMenuToggle={handleMenuToggle}></NavBar>
       <div className="main-container">
+        {showMenu ? (
+          <div className="fixed inset-0 bg-black opacity-50 md:opacity-0"></div>
+        ) : (
+          ""
+        )}
         <div className="flex justify-center">
           <FadeLoader
             color={"#e9d5ff"}

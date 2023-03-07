@@ -6,8 +6,6 @@
 
 @layer base {
   body {
-    background-color: #3d265a;
-    /* background-color: #4f3074; */
     font-family: "Open Sans", sans-serif;
   }
   h1,
@@ -134,7 +132,7 @@
   }
 
   .nav-bar {
-    @apply flex justify-between py-4 w-11/12 mx-auto;
+    @apply bg-purple-1000 fixed flex flex-col gap-2 md:flex-row md:justify-between p-4 inset-x-0 z-50;
   }
 
   .nav-bar a {
@@ -157,7 +155,7 @@
   }
 
   .main-container {
-    @apply grow rounded-2xl py-12;
+    @apply grow rounded-2xl pt-24 pb-12;
     background-color: #4f3074;
   }
 
